@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="imageContainer"></div>
+    <!-- <canvas id="canvas"></canvas>
+    <script>
+        function draw() {
+            let width = 240;
+            let height = 240;
+            let canvas = document.getElementById('canvas');
+            let ctx = canvas.getContext('2d');
+            let img = new Image();
+            img.width = width;
+            img.height = height;
+            img.onload = function() {
+                ctx.clearRect(0, 0, width, height);
+                ctx.drawImage(img, 0, 0);
+            }
+            img.src = `https://img1.baidu.com/it/u=2008199461,1637454633&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=749&${new Date().getTime()}`;
+        }
+
+        setInterval(() => {
+            draw()
+        }, 200); -->
+    <!-- <script>
+        const imageContainer = document.getElementById('imageContainer');
+        // const socket = new WebSocket('ws://your-socket-server-url');
+
+        // socket.addEventListener('message', (event) => {
+        //     const imageData = JSON.parse(event.data);
+        //     displayImage(imageData);
+        // });
+
+        setInterval(() => {
+            displayImage('https://img1.baidu.com/it/u=2008199461,1637454633&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=749')
+        }, 50)
+
+        function displayImage(imageData) {
+            const img = new Image();
+            img.src = imageData;
+            img.alt = 'Image';
+            imageContainer.style.opacity = 0;  // 初始透明度为0
+            imageContainer.innerHTML = '';
+            imageContainer.appendChild(img);
+
+            // 强制浏览器重绘
+            imageContainer.offsetHeight;
+
+            // 切换透明度为1，触发过渡效果
+            imageContainer.style.opacity = 1;
+        }
+    </script> -->
+
+    <canvas id="imageCanvas" width="300" height="200"></canvas>
+
+    <script>
+        const canvas = document.getElementById('imageCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // socket.addEventListener('message', (event) => {
+        //     const imageData = JSON.parse(event.data);
+        //     preloadImage(imageData.url, () => {
+        //         displayImage(imageData);
+        //     });
+        // });
+
+        setInterval(() => {
+            // preloadImage('https://img1.baidu.com/it/u=2008199461,1637454633&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=749', () => {
+            //     displayImage('https://img1.baidu.com/it/u=2008199461,1637454633&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=749');
+            // });
+
+            displayImage('https://img1.baidu.com/it/u=2008199461,1637454633&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=749');
+        }, 30)
+
+        function preloadImage(url, callback) {
+            const img = new Image();
+            img.src = url;
+            img.onload = callback;
+        }
+
+        function displayImage(imageData) {
+            const img = new Image();
+            img.src = imageData;
+            img.alt = 'Image';
+
+            // 清空Canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // 将图片绘制到Canvas
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        }
+    </script>
+</body>
+
+</html>
